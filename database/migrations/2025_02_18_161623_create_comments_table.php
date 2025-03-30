@@ -11,13 +11,13 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('comments', function (Blueprint $table) {
-            $table->id();
-            $table->text('description');
-            $table->unsignedBigInteger('product_id');
-            $table->foreign('product_id')->references('id')->on('products');
-            $table->timestamps();
-        });
+        Schema::create('comments', function (Blueprint $table) {  
+            $table->id();  
+            $table->unsignedBigInteger('product_id'); 
+            $table->text('content');  
+            $table->timestamps();  
+            $table->foreign('product_id')->references('id')->on('products')->onDelete('cascade');  
+        });  
     }
 
     /**
